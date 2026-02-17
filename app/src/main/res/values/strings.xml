@@ -1,0 +1,17 @@
+<resources>
+    <!--credenciales de aplicativo-->
+    <string name="app_name">gestion501</string>
+    <string name="developer">adan chambi</string>
+    <string name="desarrollo">desarrollado por:</string>
+    <string name="version">Version 1.0.0</string>
+    <!--login-->
+    <string name="Titulo_login">Ingresar Sesion</string>
+    <string name="lbl_usuario">Usuario</string>
+    <string name="txt_usuario">Ingrase Usuario</string>
+    <string name="lbl_password">Contraseña</string>
+    <string name="txt_password">Ingrasar Contraseña</string>
+    <string name="btn_ingresar">Ingresar</string>
+    <string name="lbl_crear_cuenta">No tienes cuenta ?, Registrate</string>
+
+
+</resources>
