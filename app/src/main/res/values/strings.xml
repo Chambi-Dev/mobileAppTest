@@ -1,6 +1,6 @@
 <resources>
     <!--credenciales de aplicativo-->
-    <string name="app_name">gestion501</string>
+    <string name="app_name">Gestion501</string>
     <string name="developer">adan chambi</string>
     <string name="desarrollo">desarrollado por:</string>
     <string name="version">Version 1.0.0</string>
@@ -12,6 +12,15 @@
     <string name="txt_password">Ingrasar Contraseña</string>
     <string name="btn_ingresar">Ingresar</string>
     <string name="lbl_crear_cuenta">No tienes cuenta ?, Registrate</string>
-
+    <!--registro-->
+    <string name="titulo_registro">Crear Cuenta</string>
+    <string name="lbl_nombre_usuario">Nombre de Usuario</string>
+    <string name="txt_nombre_usuario">Ingrese un usuario</string>
+    <string name="lbl_nueva_password">Contraseña</string>
+    <string name="txt_nueva_password">Ingrese una contraseña</string>
+    <string name="lbl_confirmar_password">Confirmar Contraseña</string>
+    <string name="txt_confirmar_password">Repita la contraseña</string>
+    <string name="btn_registrar">Registrarse</string>
+    <string name="lbl_ya_tienes_cuenta">¿Ya tienes cuenta? Inicia sesión</string>
 
 </resources>
