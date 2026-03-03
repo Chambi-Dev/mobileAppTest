@@ -12,12 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gestion501">
         <activity
+            android:name=".DashBoardActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
             android:name=".PrecargadoActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

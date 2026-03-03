@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "646504786524",
+    "firebase_url": "https://gestion501-3fc5a-default-rtdb.firebaseio.com",
+    "project_id": "gestion501-3fc5a",
+    "storage_bucket": "gestion501-3fc5a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646504786524:android:e520395c35609c9569d499",
+        "android_client_info": {
+          "package_name": "com.strange.gestion501"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBukSr4qaTLZ-dlgsop82pSLr5FeNi2w5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

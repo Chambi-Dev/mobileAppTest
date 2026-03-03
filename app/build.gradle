@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -34,6 +35,13 @@ dependencies {
     implementation libs.material
     //sirve para las animaciones
     implementation 'com.airbnb.android:lottie:3.0.1'
+    //dependendia para analitycs firebase
+    implementation 'com.google.firebase:firebase-analytics:21.3.0'
+    //libreria para la autenticacion de firebase
+    implementation 'com.google.firebase:firebase-auth:22.1.2'
+    //libreria para la base de datos en tiempo real de firebase
+    implementation 'com.google.firebase:firebase-database:20.2.2'
+
     implementation libs.activity
     implementation libs.constraintlayout
     testImplementation libs.junit

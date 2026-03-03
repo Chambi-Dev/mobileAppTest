@@ -1,26 +1,36 @@
 package com.strange.gestion501;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText etUsuario, etPassword;
     private Button btnIngresar;
     private TextView tvCrearCuenta;
-    private UsuarioPrefs usuarioPrefs;
+    FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
+    String usuario="", password="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,46 +43,62 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        usuarioPrefs  = new UsuarioPrefs(this);
 
-        etUsuario     = findViewById(R.id.etUsuario);
-        etPassword    = findViewById(R.id.etPassword);
-        btnIngresar   = findViewById(R.id.button);
+        etUsuario     = findViewById(R.id.LUsuario);
+        etPassword    = findViewById(R.id.LPassword);
+        btnIngresar   = findViewById(R.id.Lbutton);
         tvCrearCuenta = findViewById(R.id.textView6);
 
-        btnIngresar.setOnClickListener(v -> validarLogin());
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setTitle("Iniciando sesión");
+        progressDialog.setCanceledOnTouchOutside(false);
+
+
+        btnIngresar.setOnClickListener(v -> validarDatos());
 
         tvCrearCuenta.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, RegistroActivity.class));
         });
     }
 
-    private void validarLogin() {
-        String usuario  = etUsuario.getText() != null
-                ? etUsuario.getText().toString().trim() : "";
-        String password = etPassword.getText() != null
-                ? etPassword.getText().toString() : "";
+    private void validarDatos() {
+        usuario = etUsuario.getText().toString().trim();
+        password = etPassword.getText().toString().trim();
 
-        if (TextUtils.isEmpty(usuario)) {
-            etUsuario.setError("Ingrese su usuario");
-            etUsuario.requestFocus();
-            return;
-        }
-        if (TextUtils.isEmpty(password)) {
-            etPassword.setError("Ingrese su contraseña");
-            etPassword.requestFocus();
-            return;
-        }
-
-        if (usuarioPrefs.validar(usuario, password)) {
-            Toast.makeText(this, "✅ Bienvenido, " + usuario + "!", Toast.LENGTH_SHORT).show();
-            // TODO: navegar a la pantalla principal
-            // startActivity(new Intent(this, HomeActivity.class));
-            // finish();
+        if (!Patterns.EMAIL_ADDRESS.matcher(usuario).matches()){
+            Toast.makeText(this, "Debe inresar una contraseña", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Debe inresar una contraseña", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "❌ Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
-            etPassword.setText("");
-            etPassword.requestFocus();
+            loginUsuario();
+            
         }
+    }
+
+    private void loginUsuario() {
+        progressDialog.setMessage("Iniciando Sesion ...");
+        progressDialog.show();
+        mAuth.signInWithEmailAndPassword(usuario, password)
+                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()){
+                            progressDialog.dismiss();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            startActivity(new Intent(MainActivity.this, DashBoardActivity.class));
+                            Toast.makeText(MainActivity.this, "Bienvenido "+user.getEmail(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(MainActivity.this, "Correo y contraseña son incorrectos", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Toast.makeText(MainActivity.this, "Ocurrio unproblema", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

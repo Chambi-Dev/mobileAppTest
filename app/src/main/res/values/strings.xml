@@ -13,14 +13,23 @@
     <string name="btn_ingresar">Ingresar</string>
     <string name="lbl_crear_cuenta">No tienes cuenta ?, Registrate</string>
     <!--registro-->
-    <string name="titulo_registro">Crear Cuenta</string>
-    <string name="lbl_nombre_usuario">Nombre de Usuario</string>
-    <string name="txt_nombre_usuario">Ingrese un usuario</string>
+    <string name="titulo_registro">Crear cuenta</string>
+
+    <string name="lbl_nombre_usuario">Nombre</string>
+    <string name="txt_nombre_usuario">Ingresar Nombre de Usuario</string>
+
+    <string name="lbl_apellido_usuario">Apellido</string>
+    <string name="txt_apellido_usuario">Ingresar Apellido</string>
+
+    <string name="lbl_email_usuario">Correo Electronico</string>
+    <string name="txt_email_usuario">Ingresar Correo Electronico</string>
+
     <string name="lbl_nueva_password">Contraseña</string>
-    <string name="txt_nueva_password">Ingrese una contraseña</string>
+    <string name="txt_nueva_password">Ingresar Contraseña</string>
     <string name="lbl_confirmar_password">Confirmar Contraseña</string>
-    <string name="txt_confirmar_password">Repita la contraseña</string>
-    <string name="btn_registrar">Registrarse</string>
-    <string name="lbl_ya_tienes_cuenta">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="txt_confirmar_password">Repita la Contraseña</string>
+
+    <string name="btn_registrar">Registrar</string>
+    <string name="lbl_tienes_cuenta">Ya tienes cuenta? Inicia Sesion</string>
 
 </resources>

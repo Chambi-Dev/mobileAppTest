@@ -1,26 +1,49 @@
 package com.strange.gestion501;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class RegistroActivity extends AppCompatActivity {
 
-    private TextInputEditText etNuevoUsuario, etNuevaPassword, etConfirmarPassword;
+    private TextInputLayout etNuevoUsuario, etNuevoAppelido, etNuevoCorreo,etNuevaPassword, etConfirmarPassword;
     private Button btnRegistrar;
-    private TextView tvYaTienesCuenta;
-    private UsuarioPrefs usuarioPrefs;
+    TextView lblLogin;
+
+    FirebaseAuth mAuth;
+    String nombre="", apellido="", password="",correo="", confirmarPassword="";
+    ProgressDialog progressDialog;
+
+    private EditText etUsuarioLogin, etPasswordLogin;
+    private TextInputLayout tilNuevoUsuario, tilNuevaPassword, tilConfirmarPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,64 +55,119 @@ public class RegistroActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        etNuevoUsuario= findViewById(R.id.RNombreUsuario);
+        etNuevoAppelido = findViewById(R.id.RApellidoUsuario);
+        etNuevoCorreo = findViewById(R.id.REmailUsuario);
+        etNuevaPassword = findViewById(R.id.RNuevaPass);
+        etConfirmarPassword = findViewById(R.id.RConfirmarPass);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
+        
+        //generar las intasncias de firebase
+        // instanciar el progeres dialog
 
-        usuarioPrefs = new UsuarioPrefs(this);
+        mAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Espera porfavor..");
+        progressDialog.setCanceledOnTouchOutside(false);
 
-        etNuevoUsuario       = findViewById(R.id.etNuevoUsuario);
-        etNuevaPassword      = findViewById(R.id.etNuevaPassword);
-        etConfirmarPassword  = findViewById(R.id.etConfirmarPassword);
-        btnRegistrar         = findViewById(R.id.btnRegistrar);
-        tvYaTienesCuenta     = findViewById(R.id.tvYaTienesCuenta);
-
-        btnRegistrar.setOnClickListener(v -> registrarUsuario());
-
-        tvYaTienesCuenta.setOnClickListener(v -> {
-            startActivity(new Intent(RegistroActivity.this, MainActivity.class));
-            finish();
+        lblLogin = findViewById(R.id.lblVolverLogin);
+        lblLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegistroActivity.this, MainActivity.class));
+            }
         });
+
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ValidarDatos();
+            }
+        });
+
+
     }
 
-    private void registrarUsuario() {
-        String usuario   = etNuevoUsuario.getText() != null
-                ? etNuevoUsuario.getText().toString().trim() : "";
-        String password  = etNuevaPassword.getText() != null
-                ? etNuevaPassword.getText().toString() : "";
-        String confirmar = etConfirmarPassword.getText() != null
-                ? etConfirmarPassword.getText().toString() : "";
+    private void ValidarDatos() {
+        nombre = etNuevoUsuario.getEditText().getText().toString().trim();
+        apellido = etNuevoAppelido.getEditText().getText().toString().trim();
+        correo = etNuevoCorreo.getEditText().getText().toString().trim();
+        password = etNuevaPassword.getEditText().getText().toString().trim();
+        confirmarPassword = etConfirmarPassword.getEditText().getText().toString().trim();
 
-        // Validaciones
-        if (TextUtils.isEmpty(usuario)) {
-            etNuevoUsuario.setError("El usuario no puede estar vacío");
-            etNuevoUsuario.requestFocus();
-            return;
+        if (TextUtils.isEmpty(nombre)) {
+            Toast.makeText(this, "esta vacio el campo nombre", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(apellido)) {
+            Toast.makeText(this, "esta vacio el apellido", Toast.LENGTH_SHORT).show();
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+            Toast.makeText(this, "Ingresa un correo valido", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(password)|| password.length()<8) {
+            Toast.makeText(this, "Ingrese un password  como minimo de 8 letters", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(confirmarPassword)|| confirmarPassword.length()<8) {
+            Toast.makeText(this, "esta vacio el apellido", Toast.LENGTH_SHORT).show();
+        } else if (!password.equals(confirmarPassword)) {
+            Toast.makeText(this, "las contraseñas deben ser iguales", Toast.LENGTH_SHORT).show();
+        }else {
+            registrar();
         }
-        if (TextUtils.isEmpty(password)) {
-            etNuevaPassword.setError("La contraseña no puede estar vacía");
-            etNuevaPassword.requestFocus();
-            return;
-        }
-        if (password.length() < 4) {
-            etNuevaPassword.setError("La contraseña debe tener al menos 4 caracteres");
-            etNuevaPassword.requestFocus();
-            return;
-        }
-        if (!password.equals(confirmar)) {
-            etConfirmarPassword.setError("Las contraseñas no coinciden");
-            etConfirmarPassword.requestFocus();
-            return;
-        }
+    }
 
-        // Intentar registrar
-        boolean registrado = usuarioPrefs.registrar(usuario, password);
-        if (registrado) {
-            Toast.makeText(this, "✅ Usuario \"" + usuario + "\" registrado con éxito",
-                    Toast.LENGTH_LONG).show();
-            // Regresar al login
-            startActivity(new Intent(RegistroActivity.this, MainActivity.class));
-            finish();
-        } else {
-            Toast.makeText(this, "❌ El usuario \"" + usuario + "\" ya existe",
-                    Toast.LENGTH_LONG).show();
-        }
+    private void registrar() {
+        progressDialog.setMessage("Registrando...");
+        progressDialog.show();
+        mAuth.createUserWithEmailAndPassword(correo, password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        guardarUsuario();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        if (e instanceof FirebaseAuthUserCollisionException) {
+                            Toast.makeText(RegistroActivity.this, "Este correo ya está registrado. Intenta iniciar sesión.", Toast.LENGTH_LONG).show();
+                        } else if (e instanceof FirebaseAuthWeakPasswordException) {
+                            Toast.makeText(RegistroActivity.this, "La contraseña es muy débil. Usa al menos 8 caracteres.", Toast.LENGTH_LONG).show();
+                        } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(RegistroActivity.this, "El formato del correo no es válido.", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(RegistroActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+    }
+
+    private void guardarUsuario() {
+        progressDialog.setMessage("Guardando usuario...");
+        progressDialog.show();
+
+        String uid = mAuth.getUid();
+        HashMap<String, String> datousuario =new HashMap<>();
+
+        datousuario.put("uid", uid);
+        datousuario.put("nombre", nombre);
+        datousuario.put("apellido", apellido);
+        datousuario.put("correo", correo);
+        datousuario.put("password", password);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
+        databaseReference.child(uid).setValue(datousuario).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                progressDialog.dismiss();
+                Toast.makeText(RegistroActivity.this, "Usuario creado exitosamente", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(RegistroActivity.this, DashBoardActivity.class));
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
+                Toast.makeText(RegistroActivity.this, "Ocurrió un problema: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
