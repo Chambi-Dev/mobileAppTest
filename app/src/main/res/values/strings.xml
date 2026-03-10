@@ -42,4 +42,19 @@
     <string name="mis_datos">Mis Datos</string>
     <string name="cerrar_sesión">Cerrar Sesión</string>
 
+    <!-- Mis datos -->
+    <string name="correo_md">Correo Usuario</string>
+    <string name="codigo_md">Codigo Usuario</string>
+    <string name="titulo_md">Datos Personales</string>
+    <string name="datos_md">Datos...</string>
+    <string name="leyenda_md">Todos los campos son requeridos: </string>
+    <string name="nombre_md">Nombres</string>
+    <string name="apellido_md">Apellidos</string>
+    <string name="fecha_nacimiento_md">Fecha de Nacimiento</string>
+    <string name="edad_md">Edad</string>
+    <string name="telefono_md">Telefono</string>
+    <string name="domicilio_md">Domicilio</string>
+    <string name="tiktok_md">TikTok</string>
+    <string name="profesion_md">Profesion</string>
+
 </resources>

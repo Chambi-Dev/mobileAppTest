@@ -44,10 +44,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        etUsuario     = findViewById(R.id.LUsuario);
-        etPassword    = findViewById(R.id.LPassword);
+        etUsuario     = findViewById(R.id.etUsuario);
+        etPassword    = findViewById(R.id.etPassword);
         btnIngresar   = findViewById(R.id.Lbutton);
         tvCrearCuenta = findViewById(R.id.textView6);
+
+        mAuth = FirebaseAuth.getInstance();
 
         progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setTitle("Iniciando sesión");
