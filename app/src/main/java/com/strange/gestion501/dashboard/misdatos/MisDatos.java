@@ -47,6 +47,7 @@ public class MisDatos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_mis_datos);
+        // Ajusta el padding para evitar solaparse con barra de estado/navegacion.
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -59,29 +60,26 @@ public class MisDatos extends AppCompatActivity {
         etFechaNacimiento = findViewById(R.id.etFechaNacimiento);
         myInfoDOB = findViewById(R.id.myInfoBOD);
         inconCake = findViewById(R.id.myInfoCakeIcon);
-        
+
+        // Inicializa autenticacion y referencia a la coleccion de usuarios en Firebase.
         mAuth = FirebaseAuth.getInstance();
         fireBaseUser = mAuth.getCurrentUser();
-        
+
         usuarios = FirebaseDatabase.getInstance().getReference("usuarios");
 
-        // Al hacer click en el campo de texto → abre calendario
-        //etFechaNacimiento.setOnClickListener(v -> mostrarCalendario());
+        // Al pulsar el icono se abre el selector de fecha de nacimiento.
         inconCake.setOnClickListener(v -> mostrarCalendario());
-
-        // Al hacer click en el ícono del pastel → abre calendario
-        //TextInputLayout tilFecha = (TextInputLayout) etFechaNacimiento.getParent().getParent();
-        //tilFecha.setEndIconOnClickListener(v -> mostrarCalendario());
     }
 
     private void mostrarCalendario() {
+        // Crea y muestra un DatePicker de Material con la fecha actual por defecto.
         MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Selecciona tu fecha de nacimiento")
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .build();
 
         datePicker.addOnPositiveButtonClickListener(selection -> {
-            // Convertir milisegundos a fecha legible
+            // Convierte el timestamp seleccionado a formato dd/MM/yyyy.
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
             String fechaSeleccionada = sdf.format(new Date(selection));
@@ -95,11 +93,13 @@ public class MisDatos extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // Revalida el usuario activo cada vez que la vista vuelve al frente.
         fireBaseUser = mAuth.getCurrentUser();
         confirmarSesion();
     }
 
     private void confirmarSesion() {
+        // Si no hay sesion activa, vuelve a la pantalla principal.
         if (fireBaseUser != null){
             cargarDatos();
         }else {
@@ -108,13 +108,16 @@ public class MisDatos extends AppCompatActivity {
     }
 
     private void cargarDatos() {
+        // Si no hay UID autenticado, no intenta consultar la base de datos.
         String uid = mAuth.getUid();
         if (uid == null) return;
         
+        // Escucha cambios del perfil en tiempo real para refrescar la pantalla.
         usuarios.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
+                    // Lee datos del perfil desde Realtime Database de forma segura.
                     String uid = snapshot.child("uid").getValue(String.class);
                     String nombre = snapshot.child("nombre").getValue(String.class);
                     String apellido = snapshot.child("apellido").getValue(String.class);
@@ -130,7 +133,7 @@ public class MisDatos extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Punto para manejar errores de lectura (log, toast o snackbar).
             }
         });
     }
