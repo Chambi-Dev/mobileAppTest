@@ -26,9 +26,9 @@
                 android:src="@drawable/img_4"
                 android:scaleType="centerCrop"/>
             <ImageView
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:src="@drawable/perfil1"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/info"
                 android:layout_marginTop="170dp"
                 android:layout_centerHorizontal="true"/>
         </RelativeLayout>
@@ -47,12 +47,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/myInfoCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/correo_md"
                     android:textStyle="bold"
                     android:textSize="15sp"/>
                 <TextView
+                    android:id="@+id/myInfoCodigo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/codigo_md"
@@ -100,6 +102,8 @@
                         android:inputType="text"
                         android:hint="@string/nombre_md" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+
                 <com.google.android.material.textfield.TextInputLayout
 
                     android:layout_width="match_parent"
@@ -115,30 +119,49 @@
                         android:inputType="text"
                         android:hint="@string/apellido_md" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
 
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:boxCornerRadiusTopStart="16dp"
-                    app:boxCornerRadiusTopEnd="16dp"
-                    app:boxCornerRadiusBottomStart="16dp"
-                    app:boxCornerRadiusBottomEnd="16dp"
-                    app:endIconMode="custom"
-                    app:endIconDrawable="@drawable/cake1"
-                    app:endIconContentDescription="Seleccionar fecha">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etFechaNacimiento"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.textfield.TextInputLayout
+
+                            android:id="@+id/myInfoBOD"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxCornerRadiusTopEnd="16dp"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusBottomEnd="16dp"
+                            app:endIconContentDescription="Seleccionar fecha">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etFechaNacimiento"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="date"
+                                android:hint="@string/fecha_nacimiento_md" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/myInfoCakeIcon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:focusable="false"
-                        android:clickable="true"
-                        android:hint="@string/fecha_nacimiento_md" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:src="@drawable/cake"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+
                 <com.google.android.material.textfield.TextInputLayout
 
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     app:boxCornerRadiusTopStart="16dp"
@@ -148,24 +171,45 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:hint="@string/edad_md" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:boxCornerRadiusTopStart="16dp"
-                    app:boxCornerRadiusTopEnd="16dp"
-                    app:boxCornerRadiusBottomStart="16dp"
-                    app:boxCornerRadiusBottomEnd="16dp">
-                    <com.google.android.material.textfield.TextInputEditText
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.textfield.TextInputLayout
+
+                            android:id="@+id/myInfoPhoneInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            app:boxCornerRadiusTopStart="16dp"
+                            app:boxCornerRadiusTopEnd="16dp"
+                            app:boxCornerRadiusBottomStart="16dp"
+                            app:boxCornerRadiusBottomEnd="16dp"
+                            app:endIconContentDescription="Seleccionar fecha">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:hint="@string/telefono_md" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/myInfoPhoneIcon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:hint="@string/telefono_md" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:src="@drawable/icons8_phone"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
                 <com.google.android.material.textfield.TextInputLayout
 
                     android:layout_width="match_parent"
