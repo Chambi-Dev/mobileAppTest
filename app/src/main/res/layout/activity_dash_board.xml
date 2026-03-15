@@ -58,7 +58,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/bienv_1">
+                    android:src="@drawable/info">
 
                 </ImageView>
 
@@ -333,7 +333,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnCerrarSesion"
             android:text="@string/cerrar_sesión"
-            android:drawableLeft="@drawable/logout"
+            android:drawableLeft="@drawable/logout1"
             android:textSize="16sp"
             android:textStyle="bold"/>
         <Button
@@ -341,7 +341,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnDesarrollado"
             android:text="@string/desarrollo"
-            android:drawableLeft="@drawable/logout"
             android:textSize="16sp"
             android:textStyle="bold"/>
 
