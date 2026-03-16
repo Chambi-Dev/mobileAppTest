@@ -2,6 +2,7 @@ package com.strange.gestion501.dashboard.misdatos;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -35,7 +36,7 @@ public class MisDatos extends AppCompatActivity {
 
 
     TextInputLayout myInfoDOB, myInfoPhone;
-    GifImageView inconCake, IconPhone;
+    GifImageView inconCake, iconPhone;
     TextView txtNombreApellido, txtCodigoUser;
     TextInputEditText etFechaNacimiento;
     FirebaseAuth mAuth;
@@ -58,14 +59,18 @@ public class MisDatos extends AppCompatActivity {
         txtNombreApellido = findViewById(R.id.myInfoCorreo);
         txtCodigoUser = findViewById(R.id.myInfoCodigo);
         etFechaNacimiento = findViewById(R.id.etFechaNacimiento);
+        myInfoPhone = findViewById(R.id.myInfoPhoneInput);
         myInfoDOB = findViewById(R.id.myInfoBOD);
         inconCake = findViewById(R.id.myInfoCakeIcon);
+        iconPhone = findViewById(R.id.myInfoPhoneIcon);
 
         // Inicializa autenticacion y referencia a la coleccion de usuarios en Firebase.
         mAuth = FirebaseAuth.getInstance();
         fireBaseUser = mAuth.getCurrentUser();
 
         usuarios = FirebaseDatabase.getInstance().getReference("usuarios");
+
+        iconPhone.setOnClickListener(v -> mostrarTeclado());
 
         // Al pulsar el icono se abre el selector de fecha de nacimiento.
         inconCake.setOnClickListener(v -> mostrarCalendario());
@@ -134,6 +139,23 @@ public class MisDatos extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Punto para manejar errores de lectura (log, toast o snackbar).
+            }
+        });
+    }
+    private void mostrarTeclado() {
+        // Usa el EditText interno del TextInputLayout para foco y teclado.
+        TextInputEditText etPhone = (TextInputEditText) myInfoPhone.getEditText();
+        if (etPhone == null) return;
+
+        etPhone.requestFocus();
+        etPhone.post(() -> {
+            if (etPhone.getText() != null) {
+                etPhone.setSelection(etPhone.getText().length());
+            }
+
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.showSoftInput(etPhone, InputMethodManager.SHOW_IMPLICIT);
             }
         });
     }
