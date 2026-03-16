@@ -20,11 +20,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <ImageView
+            <pl.droidsonroids.gif.GifImageView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/img_4"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_cerebro_mov" />
+
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -152,7 +153,7 @@
                     <pl.droidsonroids.gif.GifImageView
                         android:id="@+id/myInfoCakeIcon"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:src="@drawable/cake"
                         android:layout_gravity="center"/>
 
@@ -205,8 +206,8 @@
                     <pl.droidsonroids.gif.GifImageView
                         android:id="@+id/myInfoPhoneIcon"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/icons8_phone"
+                        android:layout_height="45dp"
+                        android:src="@drawable/telefono"
                         android:layout_gravity="center"/>
 
                 </LinearLayout>
