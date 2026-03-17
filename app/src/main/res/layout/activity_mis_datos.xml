@@ -27,6 +27,7 @@
                 android:src="@drawable/bg_cerebro_mov" />
 
             <ImageView
+                android:id="@+id/imagePerfil"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/info"
@@ -90,6 +91,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
 
+                    android:id="@+id/myInfoNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -107,6 +109,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
 
+                    android:id="@+id/myInfoApellido"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -162,6 +165,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
 
+                    android:id="@+id/myInfoEdad"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -169,11 +173,12 @@
                     app:boxCornerRadiusTopEnd="16dp"
                     app:boxCornerRadiusBottomStart="16dp"
                     app:boxCornerRadiusBottomEnd="16dp">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:hint="@string/edad_md" />
+                        android:hint="@string/edad_md"
+                        android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -213,6 +218,7 @@
                 </LinearLayout>
                 <com.google.android.material.textfield.TextInputLayout
 
+                    android:id="@+id/myInfoDomicilio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -228,6 +234,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
 
+                    android:id="@+id/myInfoTiktok"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -243,6 +250,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
 
+                    android:id="@+id/myInfoProfesion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -258,6 +266,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
+                    android:id="@+id/btnGuardarMisDatos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"

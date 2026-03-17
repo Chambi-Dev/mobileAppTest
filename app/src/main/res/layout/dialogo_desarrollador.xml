@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:clipToPadding="false"
+    android:paddingBottom="12dp"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/desarrollo"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/developer"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion_dev"
+            android:justificationMode="inter_character"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/version"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/telefono"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion_dev"
+            android:layout_marginTop="10dp"
+            android:justificationMode="inter_character"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion_dev"
+            android:layout_marginTop="10dp"
+            android:justificationMode="inter_character"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion_dev"
+            android:layout_marginTop="10dp"
+            android:justificationMode="inter_character"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion_dev"
+            android:layout_marginTop="10dp"
+            android:justificationMode="inter_character"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descripcion_dev"
+            android:layout_marginTop="10dp"
+            android:justificationMode="inter_character"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/githubIcon"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:scaleType="centerInside"
+                    android:background="@null"
+                    android:src="@drawable/github">
+
+                </ImageButton>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/youtubeIcon"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/youtube">
+
+                </ImageButton>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnVolverDesarrollado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/volver"
+            android:layout_marginTop="10dp">
+
+        </Button>
+
+
+    </LinearLayout>
+
+</ScrollView>

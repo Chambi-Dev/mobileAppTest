@@ -1,9 +1,12 @@
 package com.strange.gestion501;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,7 @@ import com.strange.gestion501.dashboard.tareas.Tareas;
 public class DashBoardActivity extends AppCompatActivity {
     CardView cvEmpresa, cvGastos, cvTareas, cvListaTareas, cvFavoritos, cvMisDatos;
     TextView txtNombreApellido, txtCodigoUser;
+    Dialog dialogDev;
 
     Button btnCerrarSesion, btnDesarrollado;
     FirebaseAuth mAuth;
@@ -48,6 +52,9 @@ public class DashBoardActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        dialogDev = new Dialog(this);
+
         cvEmpresa = findViewById(R.id.cvEmpresa);
         cvGastos = findViewById(R.id.cvGastos);
         cvTareas = findViewById(R.id.cvTareas);
@@ -128,8 +135,18 @@ public class DashBoardActivity extends AppCompatActivity {
 
 
 
+        btnDesarrollado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                desarrollador();
+            }
+        });
 
     }
+
+
+
+
 
     private void cerrarSesion() {
         mAuth.signOut();
@@ -179,5 +196,50 @@ public class DashBoardActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void desarrollador(){
+        Button volver;
+        ImageButton github, youtube;
+
+        dialogDev.setContentView(R.layout.dialogo_desarrollador);
+        volver = dialogDev.findViewById(R.id.btnVolverDesarrollado);
+        github = dialogDev.findViewById(R.id.githubIcon);
+        youtube = dialogDev.findViewById(R.id.youtubeIcon);
+
+        github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String github = "https://github.com/Chambi-Dev";
+                Uri uri = Uri.parse(github);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+
+            }
+        });
+
+        youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String youtube = "https://www.youtube.com/watch?v=ko70cExuzZM&list=RDko70cExuzZM&start_radio=1";
+                Uri uri = Uri.parse(youtube);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+
+
+            }
+        });
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogDev.dismiss();
+            }
+        });
+        dialogDev.show();
+        dialogDev.setCanceledOnTouchOutside(false);
+
+
+    }
+
+    public void verificarDatos(){
+
     }
 }

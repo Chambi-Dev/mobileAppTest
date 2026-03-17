@@ -151,6 +151,13 @@ public class RegistroActivity extends AppCompatActivity {
         datousuario.put("apellido", apellido);
         datousuario.put("correo", correo);
         datousuario.put("password", password);
+        datousuario.put("fechaNacimiento", "");
+        datousuario.put("edad", "");
+        datousuario.put("telefono", "");
+        datousuario.put("domicilio", "");
+        datousuario.put("tiktok", "");
+        datousuario.put("profesion", "");
+        datousuario.put("imagen", "");
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
         databaseReference.child(uid).setValue(datousuario).addOnSuccessListener(new OnSuccessListener<Void>() {

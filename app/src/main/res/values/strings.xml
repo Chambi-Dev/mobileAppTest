@@ -4,6 +4,24 @@
     <string name="developer">adan chambi</string>
     <string name="desarrollo">desarrollado por:</string>
     <string name="version">Version 1.0.0</string>
+
+    <string name="descripcion_dev">
+        Desarrollador de software enfocado en la creación de soluciones móviles nativas e integraciones backend.
+        Mi formación técnica abarca desde la programación orientada a objetos en Java hasta un interés profundo
+        por la Ciencia de Datos y el Machine Learning. Disfruto construyendo desde interfaces de usuario fluidas
+        hasta explorando algoritmos de visión computacional y análisis predictivo
+    </string>
+    <string name="telefono">92478373848</string>
+
+    <!--botones globales-->
+    <string name="listar">Listar</string>
+    <string name="guardara">Guardar</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="buscar">Buscar</string>
+    <string name="volver">Volver</string>
+
+
     <!--login-->
     <string name="Titulo_login">Ingresar Sesion</string>
     <string name="lbl_usuario">Usuario</string>
@@ -41,6 +59,8 @@
     <string name="favoritos">Favoritos</string>
     <string name="mis_datos">Mis Datos</string>
     <string name="cerrar_sesión">Cerrar Sesión</string>
+
+    
 
     <!-- Mis datos -->
     <string name="correo_md">Correo Usuario</string>
