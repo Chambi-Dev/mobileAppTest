@@ -52,7 +52,7 @@
 
     <!--Dahs board-->
     <string name="bienvenido">Bienvenido</string>
-    <string name="empresa">Empresa</string>
+    <string name="cliente">Cliente</string>
     <string name="gastos">Gastos</string>
     <string name="lista_tareas">Lista de Tareas</string>
     <string name="tareas">Tareas</string>
@@ -60,7 +60,6 @@
     <string name="mis_datos">Mis Datos</string>
     <string name="cerrar_sesión">Cerrar Sesión</string>
 
-    
 
     <!-- Mis datos -->
     <string name="correo_md">Correo Usuario</string>
@@ -76,5 +75,28 @@
     <string name="domicilio_md">Domicilio</string>
     <string name="tiktok_md">TikTok</string>
     <string name="profesion_md">Profesion</string>
+
+    <!--ITEM CLIENTE-->
+    <string name="id_cliente_item">Id Cliente</string>
+    <string name="uid_cliente">Uid Cliente</string>
+    <string name="nombre_cliente_item">Nombre</string>
+    <string name="apellido_cliente_item">Apellidos</string>
+    <string name="correo_cliente_item">Correo</string>
+    <string name="dni_cliente_item">Dni</string>
+    <string name="telefono_cliente_item">Telefono</string>
+    <string name="direccion_cliente_Item">Direccion</string>
+    <!--agregar cliente-->
+    <string name="registrar_cli">Registrar Cliente</string>
+    <string name="uid_usuario">Mi UID</string>
+    <string name="nombre_cli">Nombres Clientes</string>
+    <string name="apellidos_cli">Apellidos_Clientes</string>
+    <string name="correo_cli">Correo</string>
+    <string name="dni_cli">DNI</string>
+    <string name="telefon_cli">Telefono</string>
+    <string name="direccion_cli">Direccion</string>
+    <!--CUADROS DE DIALOGO-->
+    <string name="titulo_val_cli">Aviso del Aplicativo</string>
+    <string name="desc_val_cli">Debe de ingresar como minimo el Nombre del Cliente. Gracias!</string>
+    <string name="btn_entendido_cli">Entendido</string>
 
 </resources>

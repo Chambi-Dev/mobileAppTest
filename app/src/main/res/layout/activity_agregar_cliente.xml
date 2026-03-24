@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".clientes.AgregarCliente">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTituloI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registrar_cli"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/txtUidI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/uid_usuario"
+            android:textSize="25sp"
+
+            android:gravity="center"/>
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="15dp"
+            app:lottie_imageAssetsFolder="assest"
+            app:lottie_fileName="plataforma.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_gravity="center_horizontal">
+
+        </com.airbnb.lottie.LottieAnimationView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <EditText
+                android:id="@+id/etNombresI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nombre_cli"
+                android:drawableLeft="@drawable/add"
+                android:drawablePadding="15dp"
+                android:inputType="text"
+                android:layout_gravity="center_horizontal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <EditText
+                android:id="@+id/etApellidosI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/apellidos_cli"
+                android:drawableLeft="@drawable/add"
+                android:drawablePadding="15dp"
+                android:inputType="text"
+                android:layout_gravity="center_horizontal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <EditText
+                android:id="@+id/etCorreoI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/correo_cli"
+                android:drawableLeft="@drawable/add"
+                android:drawablePadding="15dp"
+                android:inputType="text"
+                android:layout_gravity="center_horizontal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <EditText
+                android:id="@+id/etDniI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dni_cli"
+                android:drawableLeft="@drawable/add"
+                android:drawablePadding="15dp"
+                android:inputType="text"
+                android:layout_gravity="center_horizontal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <EditText
+                android:id="@+id/etTelefonoI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/telefon_cli"
+                android:drawableLeft="@drawable/add"
+                android:drawablePadding="15dp"
+                android:inputType="text"
+                android:layout_gravity="center_horizontal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <EditText
+                android:id="@+id/etDireccionI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/direccion_cli"
+                android:drawableLeft="@drawable/add"
+                android:drawablePadding="15dp"
+                android:inputType="text"
+                android:layout_gravity="center_horizontal"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        
+        <Button
+            android:id="@+id/btnGuardarI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guardara"
+            android:padding="15dp"
+            android:drawableLeft="@drawable/add"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</ScrollView>

@@ -1,4 +1,4 @@
-package com.strange.gestion501.dashboard.empresa;
+package com.strange.gestion501.dashboard.listacliente;
 
 import android.os.Bundle;
 
@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.strange.gestion501.R;
 
-public class Empresa extends AppCompatActivity {
+public class ListaCliente extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

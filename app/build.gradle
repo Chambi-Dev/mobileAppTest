@@ -44,6 +44,11 @@ dependencies {
     //libreria para gif animados
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
 
+    // LOMBOK: compileOnly significa que no se compilará dentro del APK final (no pesa nada)
+    compileOnly("org.projectlombok:lombok:1.18.30")
+    // annotationProcessor es el obrero que escribe los getters y setters invisibles
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
+
     implementation libs.activity
     implementation libs.constraintlayout
     testImplementation libs.junit

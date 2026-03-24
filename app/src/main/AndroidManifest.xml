@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gestion501">
         <activity
+            android:name=".clientes.ListaCliente"
+            android:exported="false" />
+        <activity
+            android:name=".clientes.AgregarCliente"
+            android:exported="false" />
+        <activity
             android:name=".dashboard.gastos.Gastos"
             android:exported="false" />
         <activity
@@ -27,7 +33,7 @@
             android:name=".dashboard.favoritos.Favoritos"
             android:exported="false" />
         <activity
-            android:name=".dashboard.empresa.Empresa"
+            android:name=".dashboard.listacliente.ListaCliente"
             android:exported="false" />
         <activity
             android:name=".DashBoardActivity"

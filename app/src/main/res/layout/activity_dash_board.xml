@@ -80,7 +80,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cvEmpresa"
+                    android:id="@+id/cvClientes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="20dp">
@@ -94,14 +94,14 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/clientes_bi"
+                            android:src="@drawable/perfil1"
                             android:layout_gravity="center">
 
                         </ImageView>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/empresa"
+                            android:text="@string/cliente"
                             android:textColor="@color/primaryColor"
                             android:textSize="16sp"
                             android:textStyle="bold"

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="0.2dp"
+    app:cardCornerRadius="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <ImageView
+            android:id="@+id/ivClienteFotoI"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/info"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tvIdClienteI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/id_cliente_item"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tvUidClienteI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/uid_cliente"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tvNombresI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre_cliente_item"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tvApellidosI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/apellido_cliente_item"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tvCorreoI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/correo_cliente_item"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tvDniI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dni_cliente_item"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tvTelefonoI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/telefono_cliente_item"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:id="@+id/tvDireccionI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/direccion_cliente_Item"
+                android:layout_marginTop="5dp"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.cardview.widget.CardView>

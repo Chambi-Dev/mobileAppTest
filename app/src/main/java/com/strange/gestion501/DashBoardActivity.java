@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,13 +26,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.strange.gestion501.dashboard.empresa.Empresa;
+import com.strange.gestion501.clientes.ListaCliente;
 import com.strange.gestion501.dashboard.gastos.Gastos;
 import com.strange.gestion501.dashboard.misdatos.MisDatos;
 import com.strange.gestion501.dashboard.tareas.Tareas;
 
 public class DashBoardActivity extends AppCompatActivity {
-    CardView cvEmpresa, cvGastos, cvTareas, cvListaTareas, cvFavoritos, cvMisDatos;
+    CardView cvClientes, cvGastos, cvTareas, cvListaTareas, cvFavoritos, cvMisDatos;
     TextView txtNombreApellido, txtCodigoUser;
     Dialog dialogDev;
 
@@ -55,7 +56,7 @@ public class DashBoardActivity extends AppCompatActivity {
 
         dialogDev = new Dialog(this);
 
-        cvEmpresa = findViewById(R.id.cvEmpresa);
+        cvClientes = findViewById(R.id.cvClientes);
         cvGastos = findViewById(R.id.cvGastos);
         cvTareas = findViewById(R.id.cvTareas);
         cvListaTareas = findViewById(R.id.cvListaTareas);
@@ -84,12 +85,23 @@ public class DashBoardActivity extends AppCompatActivity {
             }
         });
 
-        cvEmpresa.setOnClickListener(new View.OnClickListener() {
+        cvClientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DashBoardActivity.this, "Es es Empresa", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(DashBoardActivity.this, Empresa.class));
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if (currentUser == null) {
+                    Toast.makeText(DashBoardActivity.this, "Sesion expirada, vuelve a iniciar sesion", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(DashBoardActivity.this, MainActivity.class));
+                    finish();
+                    return;
+                }
+
+                Intent intent = new Intent(DashBoardActivity.this, ListaCliente.class);
+                intent.putExtra("uid", currentUser.getUid());
+                startActivity(intent);
+
             }
+
         });
 
         cvGastos.setOnClickListener(new View.OnClickListener() {
@@ -187,6 +199,9 @@ public class DashBoardActivity extends AppCompatActivity {
 
                     txtNombreApellido.setText(nombre+" "+apellido);
                     txtCodigoUser.setText(uid);
+
+                    //recibirdatos(uid);
+
 
                 }
             }
