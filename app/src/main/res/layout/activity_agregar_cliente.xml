@@ -32,17 +32,15 @@
             android:textSize="25sp"
 
             android:gravity="center"/>
-        <com.airbnb.lottie.LottieAnimationView
+        <ImageView
+            android:id="@+id/ivfotoClienteA"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_marginTop="15dp"
-            app:lottie_imageAssetsFolder="assest"
-            app:lottie_fileName="plataforma.json"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
+            android:src="@drawable/info"
             android:layout_gravity="center_horizontal">
 
-        </com.airbnb.lottie.LottieAnimationView>
+        </ImageView>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
