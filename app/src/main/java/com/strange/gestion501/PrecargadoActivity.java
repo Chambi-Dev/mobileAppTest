@@ -37,6 +37,7 @@ public class PrecargadoActivity extends AppCompatActivity {
             }
         },3000);
     }
+    // comentario para el test de error en github
 
     private void verificarUsuario() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
