@@ -23,6 +23,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * MainActivity handles user authentication and login functionality.
+ * This activity serves as the entry point for the application where users
+ * can log in with their email and password credentials.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText etUsuario, etPassword;
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()){
+                    if (task.isSuccessful()){
                             progressDialog.dismiss();
                             FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(new Intent(MainActivity.this, DashBoardActivity.class));
