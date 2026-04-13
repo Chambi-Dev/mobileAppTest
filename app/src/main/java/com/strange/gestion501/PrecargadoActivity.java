@@ -37,6 +37,7 @@ public class PrecargadoActivity extends AppCompatActivity {
             }
         },3000);
     }
+    //comentario de prueba de errro de git rama adam
 
     private void verificarUsuario() {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
